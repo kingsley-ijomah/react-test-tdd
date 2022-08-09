@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="button-style"
+    data-testid="button"
+    type="button"
+  >
+    Click me now!
+  </button>
+  <p
+    data-testid="click-me"
+  >
+    Click me!
+  </p>
+</DocumentFragment>
+`;
