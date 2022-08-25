@@ -1,46 +1,50 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Button from '../Button';
 
 describe('Button', () => {
-  let button = null;
-
   beforeEach(() => {
-    button = render(<Button label="Click me now!" />);
+    render(<Button label="Click me now!" />);
   });
 
   it('should render a button', () => {
+    const button = screen.getByTestId('toggle-button');
     expect(button).toBeTruthy();
   });
 
   it('renders with label', () => {
-    expect(button.getByTestId('button')).toHaveTextContent('Click me now!');
+    expect(screen.getByTestId('toggle-button')).toHaveTextContent(
+      'Click me now!'
+    );
   });
 
   it('renders with class', () => {
-    expect(button.getByTestId('button')).toHaveClass('button-style');
+    expect(screen.getByTestId('toggle-button')).toHaveClass('button-style');
   });
 
   it('renders with data-testid', () => {
-    expect(button.getByTestId('button')).toHaveAttribute('data-testid');
+    expect(screen.getByTestId('toggle-button')).toHaveAttribute('data-testid');
   });
 
   it('renders with correct type', () => {
-    expect(button.getByTestId('button')).toHaveAttribute('type', 'button');
+    expect(screen.getByTestId('toggle-button')).toHaveAttribute(
+      'type',
+      'button'
+    );
   });
 
   it('renders `click me` on screen', () => {
-    expect(button.getByTestId('click-me')).toBeTruthy();
+    expect(screen.getByTestId('click-me')).toBeTruthy();
   });
 
   it('does not render `you clicked me` by default', () => {
-    expect(button.queryByTestId('you-click-me')).toBeFalsy();
+    expect(screen.queryByTestId('you-click-me')).toBeFalsy();
   });
 
   it('renders `you clicked me` when clicked', () => {
-    fireEvent.click(button.queryByTestId('button'));
+    fireEvent.click(screen.queryByTestId('toggle-button'));
 
-    expect(button.queryByTestId('you-clicked-me')).toBeTruthy();
+    expect(screen.queryByTestId('you-clicked-me')).toBeTruthy();
   });
 
   it('matches snapshot', () => {
