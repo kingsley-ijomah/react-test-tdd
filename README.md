@@ -18,4 +18,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm coverage`
 
-Display test coverage accross files
+Display test coverage accross files.
